@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import {BrowserRouter, Routes, Route, Redirect} from "react-router-dom";
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import {createBrowserHistory} from "history";
 import MicroFrontend from "./MicroFrontend";
-import logo from './logo.svg';
 import './App.css';
 
 const defaultHistory = createBrowserHistory()
@@ -77,10 +76,10 @@ function Home({ history }) {
 function App({ history = defaultHistory }) {
   return (
     <BrowserRouter>
-        <Routes>
-          <Route exact path="/cat/:greeting" element={<GreetingCat history={history} />} />
-          <Route exact path="/" element={<Home history={history} />} />
-        </Routes>
+        <Switch>
+          <Route exact path="/cat/:greeting" component={GreetingCat} />
+          <Route exact path="/" component={Home} />
+        </Switch>
     </BrowserRouter>
   );
 }
